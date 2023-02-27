@@ -72,5 +72,14 @@ namespace Modelos
 
             return historial;
         }
+
+        public string GetCuotaSocio(string DNI)
+        {
+            DBContext contexto = new DBContext();
+            string historial = "";
+            historial = contexto.obtenerCuotaSocio(DNI);
+
+            return historial;
+        }
     }
 }

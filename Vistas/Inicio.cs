@@ -68,6 +68,7 @@ namespace ADMBiblioteca
             lbDNISocio.Text = socio["DNI"];
             lbCategoria.Text = socio["Categoria"];
             lbEjemplaresRetirados.Text = socio["EjemplaresRetirados"];
+            lbCuota.Text = this.presentadorSocios.DevolverCuota(datos);
 
             foreach(var ejemplar in ejemplaresSocio)
             {
@@ -135,12 +136,70 @@ namespace ADMBiblioteca
 
         private void btPrestar_Click(object sender, EventArgs e)
         {
-            var ejemplaresSocio = this.presentadorSocios.PrestarEjemplar(DatosEjemplarAprestar, DatosSocio);
-            lstLibrosPrestadosASocio.Items.Clear();
-            foreach (var ejemplar in ejemplaresSocio)
+            int cantidadEjemplares = Convert.ToInt32(lbEjemplaresRetirados.Text);
+            switch (cantidadEjemplares)
             {
-                lstLibrosPrestadosASocio.Items.Add(ejemplaresSocio);
+                case 0:
+                    var ejemplaresSocio = this.presentadorSocios.PrestarEjemplar(DatosEjemplarAprestar, DatosSocio);
+                    lstLibrosPrestadosASocio.Items.Clear();
+                    foreach (var ejemplar in ejemplaresSocio)
+                    {
+                        lstLibrosPrestadosASocio.Items.Add(ejemplaresSocio);
+                    }
+                    break;
+                case 1:
+                    if(lbCategoria.Text == "VIP")
+                    {
+                        ejemplaresSocio = this.presentadorSocios.PrestarEjemplar(DatosEjemplarAprestar, DatosSocio);
+                        lstLibrosPrestadosASocio.Items.Clear();
+                        foreach (var ejemplar in ejemplaresSocio)
+                        {
+                            lstLibrosPrestadosASocio.Items.Add(ejemplaresSocio);
+                        }
+ 
+                    }
+                    break;
+                case 2:
+                    if (lbCategoria.Text == "VIP")
+                    {
+                        ejemplaresSocio = this.presentadorSocios.PrestarEjemplar(DatosEjemplarAprestar, DatosSocio);
+                        lstLibrosPrestadosASocio.Items.Clear();
+                        foreach (var ejemplar in ejemplaresSocio)
+                        {
+                            lstLibrosPrestadosASocio.Items.Add(ejemplaresSocio);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Limite maximo de libros prestados ");
+                    }
+                    break;
+                case 3:
+                    if (lbCategoria.Text == "VIP")
+                    {
+                        ejemplaresSocio = this.presentadorSocios.PrestarEjemplar(DatosEjemplarAprestar, DatosSocio);
+                        lstLibrosPrestadosASocio.Items.Clear();
+                        foreach (var ejemplar in ejemplaresSocio)
+                        {
+                            lstLibrosPrestadosASocio.Items.Add(ejemplaresSocio);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Limite maximo de libros prestados ");
+                    }
+                    break;
+                default:
+                    MessageBox.Show("Limite maximo de libros prestados ");
+                    break;
+
             }
+
+
+
+
         }
     }
 }

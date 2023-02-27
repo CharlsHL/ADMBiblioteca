@@ -54,6 +54,8 @@
             this.lbTXThistorial = new System.Windows.Forms.Label();
             this.panelHistorial = new System.Windows.Forms.Panel();
             this.lbHistorialCompleto = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbCuota = new System.Windows.Forms.Label();
             this.panelSocio.SuspendLayout();
             this.panelHistorial.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +90,8 @@
             // panelSocio
             // 
             this.panelSocio.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelSocio.Controls.Add(this.lbCuota);
+            this.panelSocio.Controls.Add(this.label7);
             this.panelSocio.Controls.Add(this.llbHistorialPrestamo);
             this.panelSocio.Controls.Add(this.btDevolucion);
             this.panelSocio.Controls.Add(this.lstLibrosPrestadosASocio);
@@ -111,7 +115,7 @@
             // 
             this.llbHistorialPrestamo.AutoSize = true;
             this.llbHistorialPrestamo.Enabled = false;
-            this.llbHistorialPrestamo.Location = new System.Drawing.Point(3, 153);
+            this.llbHistorialPrestamo.Location = new System.Drawing.Point(3, 189);
             this.llbHistorialPrestamo.Name = "llbHistorialPrestamo";
             this.llbHistorialPrestamo.Size = new System.Drawing.Size(112, 15);
             this.llbHistorialPrestamo.TabIndex = 12;
@@ -310,6 +314,23 @@
             this.lbHistorialCompleto.Size = new System.Drawing.Size(0, 15);
             this.lbHistorialCompleto.TabIndex = 17;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 15);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Cuota : ";
+            // 
+            // lbCuota
+            // 
+            this.lbCuota.AutoSize = true;
+            this.lbCuota.Location = new System.Drawing.Point(57, 156);
+            this.lbCuota.Name = "lbCuota";
+            this.lbCuota.Size = new System.Drawing.Size(0, 15);
+            this.lbCuota.TabIndex = 14;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -366,5 +387,7 @@
         private Label lbTXThistorial;
         private Panel panelHistorial;
         private Label lbHistorialCompleto;
+        private Label lbCuota;
+        private Label label7;
     }
 }

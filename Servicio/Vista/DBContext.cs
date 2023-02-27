@@ -66,6 +66,14 @@ namespace ADMBiblioteca.Servicio
                     command = new SqlCommand(stringCommand, conexionBD);
                     command.ExecuteNonQuery();
 
+
+                    stringCommand = "INSERT INTO Cuota (FechaPago,MontoAPagar,IdSocio)" + "values ('27/02/2023',200, 3)";
+                    command = new SqlCommand(stringCommand, conexionBD);
+                    command.ExecuteNonQuery();
+
+                    stringCommand = "INSERT INTO Cuota (FechaPago,MontoAPagar,IdSocio)" + "values ('27/02/2023',200, 2)";
+                    command = new SqlCommand(stringCommand, conexionBD);
+                    command.ExecuteNonQuery();
                 }
 
             }
@@ -103,6 +111,40 @@ namespace ADMBiblioteca.Servicio
             }
 
             return socios;
+        }
+
+        public string obtenerCuotaSocio(String DNI)
+        {
+            string cuota = "";
+            try
+            {
+                int id = 0;
+                SqlCommand command = new SqlCommand("SELECT * FROM socio where socio.DNI = " + DNI + ";", conexionBD);
+                conexionBD.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = Convert.ToInt32(reader["Id"]);
+                    break;
+                }
+                conexionBD.Close();
+
+                command = new SqlCommand("Select * from cuota where cuota.IdSocio ="+ id+"", conexionBD);
+                conexionBD.Open();
+
+
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    cuota = Convert.ToString(reader["MontoAPagar"]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return cuota;
         }
 
 

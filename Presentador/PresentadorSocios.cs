@@ -153,5 +153,12 @@ namespace Presnetador
 
             return num;
         }
+
+        public string DevolverCuota(string socio)
+        {
+            
+            return socioModelo.GetCuotaSocio(DevolverClave(socio));
+
+        }
     }
 }
